@@ -1,6 +1,37 @@
+h1 {
+  color: rgb(236, 110, 76);
+  font-weight: 600;
+  text-align: center;
+}
+ul {
+  padding-top: 30px;
+}
+a {
+  text-decoration: none;
+}
+li {
+  text-align: left;
+  list-style: none;
+  text-transform: capitalize;
+}
+strong {
+  font-size: 45px;
+}
+img,
+.image {
+  width: 70px;
+}
+.left {
+  float: left;
+}
+.cels {
+  margin-top: 10px;
+  margin-left: 5px;
+}
 .Weather {
-  border: 1px solid gray;
-  max-width: 620px;
-  margin: 30px auto;
+  border: 1px solid grey;
+
+  margin-top: 30px;
   padding: 20px;
+  border-radius: 5px;
 }
