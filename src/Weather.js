@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import ForDate from "./ForDate";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weather, setWeather] = useState({ ready: false });
   function getResponse(response) {
     setWeather({
@@ -10,11 +11,15 @@ export default function Weather() {
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
       city: response.data.main.name,
+      time: new Date(response.data.dt * 1000),
+      speed: response.data.main.feels_like,
       wind: Math.round(response.data.wind.speed),
       description: response.data.weather[0].description,
-      icon: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+      icon: `https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png`,
     });
     console.log(response.data);
+    console.log(weather.humidity);
+    console.log(response.data.dt * 1000);
   }
 
   if (weather.ready) {
@@ -22,9 +27,11 @@ export default function Weather() {
       <div className="Weather">
         <div className="row">
           <div className="col-6">
-            <h1>{weather.city}</h1>
+            <h1>{props.city}</h1>
             <ul>
-              <li>Friday 12:30, {weather.description}</li>
+              <li>
+                <ForDate date={weather.time} />, {weather.description}
+              </li>
               <li>
                 Humidity:{weather.humidity}%, Wind: {weather.wind}Km/H
               </li>
@@ -67,8 +74,8 @@ export default function Weather() {
     );
   } else {
     let apiKey = `5d480a9ea4973e7dfcb6ca4444c1582f`;
-    let city = "London";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(getResponse);
     return "Loading";
   }
