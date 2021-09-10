@@ -1,6 +1,7 @@
 import React from "react";
 import ForDate from "./ForDate";
 import WeatherIcon from "./WeatherIcon";
+import Temperature from "./Temperature";
 
 export default function WeatherData(props) {
   console.log(props.city);
@@ -25,8 +26,7 @@ export default function WeatherData(props) {
             alt={props.data.description}
             className="image left"
           />
-          <strong>{props.data.temperature}</strong>{" "}
-          <span className="cels">Cº</span>
+          <Temperature celsius={props.data.temperature} />
         </div>
       </div>
     </div>
