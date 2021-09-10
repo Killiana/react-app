@@ -16,10 +16,14 @@ li {
 }
 strong {
   font-size: 45px;
+  line-height: 64px;
 }
-img,
+canvas,
 .image {
-  width: 70px;
+  width: 50px;
+  position: relative;
+  top: 8px;
+  margin-right: 12px;
 }
 .left {
   float: left;
@@ -27,6 +31,9 @@ img,
 .cels {
   margin-top: 10px;
   margin-left: 5px;
+  line-height: 1;
+  position: relative;
+  bottom: 22px;
 }
 .Weather {
   border: 1px solid grey;

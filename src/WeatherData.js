@@ -1,11 +1,12 @@
 import React from "react";
 import ForDate from "./ForDate";
+import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherData(props) {
   console.log(props.city);
   return (
     <div className="row">
-      <div className="col-6">
+      <div className="col-7">
         <h1>{props.data.city}</h1>
 
         <ul>
@@ -17,15 +18,15 @@ export default function WeatherData(props) {
           </li>
         </ul>
       </div>
-      <div className="col-6">
+      <div className="col-5">
         <div className="clearfix">
-          <img
-            src={props.data.icon}
+          <WeatherIcon
+            image={props.data.icon}
             alt={props.data.description}
-            className="left image"
+            className="image left"
           />
-          <strong className="left">{props.data.temperature}</strong>{" "}
-          <span className="left cels">Cº</span>
+          <strong>{props.data.temperature}</strong>{" "}
+          <span className="cels">Cº</span>
         </div>
       </div>
     </div>
